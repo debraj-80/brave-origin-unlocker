@@ -1,79 +1,118 @@
 # Brave Origin Unlocker
 
-A TypeScript utility for unlocking Brave Origin features on Windows and macOS by modifying the local application state.
+A TypeScript-based utility for managing Brave Origin's local application state on Windows and macOS, built with Deno.
 
 ## Overview
 
-This tool modifies the Brave Origin browser's local state configuration to unlock premium features. It works by updating the `Local State` JSON file used by Brave to store user preferences and license validation status.
+Brave Origin Unlocker is a utility that interacts with Brave Origin's local `Local State` JSON configuration file.
+
+It is designed to modify browser configuration data related to purchase validation and SKU information.
+
+The project includes platform detection, configuration management, and additional monitoring functionality.
 
 ## Features
 
-- ✅ Unlocks Brave Origin features
-- ✅ Modifies purchase validation state
-- ✅ Updates SKU credentials
-- ✅ Windows and macOS auto-detection & compatibility
-- ✅ Easy execution and cross-compilation via Deno tasks
+- **Cross-platform support:** Windows and macOS detection.
+- **Local State management:** Reads and modifies browser configuration data.
+- **SKU configuration:** Updates locally stored SKU information.
+- **Configuration monitoring:** Includes background monitoring functionality.
+- **Automatic startup:** Includes optional startup integration.
+- **Deno-powered:** Written in TypeScript and executed using Deno.
+- **Standalone builds:** Supports compilation for supported platforms.
 
 ## Requirements
 
-- **Deno** - Modern JavaScript/TypeScript runtime
-- **Windows OS or macOS** - Supported operating systems
-- **Brave Origin** - The browser being modified
-- **File Write Permissions** - Access to browser configurations
+- [Deno](https://deno.com/)
+- Windows or macOS
+- Brave Origin installed
+- Appropriate filesystem permissions
 
 ## Installation
 
-1. Install [Deno](https://deno.land/) if you haven't already.
-2. Clone this repository:
-   ```bash
-   git clone https://github.com/ObjectAscended/brave-origin-windows-unlocker.git
-   cd brave-origin-windows-unlocker
-   ```
+### 1. Install Deno
 
-## How to Run 🚀
+Download and install Deno from:
 
-The script automatically detects whether you are running on Windows or macOS. You can run the unlocker directly with:
+https://deno.com/
+
+Verify the installation:
 
 ```bash
-deno task unlock
+deno --version
 ```
+
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/debraj-80/brave-origin-unlocker.git
+
+cd brave-origin-unlocker
+```
+
+### 3. Inspect the project
+
+Before running the utility, review its source code, Deno permissions, filesystem operations, and startup behavior.
+
+## Available Deno Tasks
+
+The project provides predefined tasks in `deno.json`.
+
+Inspect available tasks with:
+
+```bash
+deno task
+```
+
+### Compilation
+
+The project includes compilation tasks for the following targets:
+
+| Target | Task |
+|---|---|
+| Windows x64 | `compile-win` |
+| macOS Apple Silicon | `compile-mac-arm` |
+| macOS Intel | `compile-mac-x64` |
+
+Compiled outputs are configured to be placed in the `dist/` directory.
+
+## Project Structure
+
+```text
+brave-origin-unlocker/
+│
+├── unlock.ts
+├── deno.json
+├── README.md
+├── .gitignore
+└── dist/
+    └── Generated binaries
+```
+
+The `dist/` directory is generated during compilation and may not be present in a fresh clone.
+
+## Security Considerations
+
+This utility modifies browser configuration files and may interact with Windows startup mechanisms.
+
+Please consider the following before using or reviewing the project:
+
+- Back up browser configuration files before making changes.
+- Review filesystem permissions granted to Deno.
+- Understand any background monitoring or startup registration.
+- Inspect generated executables independently of the source code.
+- Do not run unfamiliar binaries with Administrator privileges.
+- Keep Windows Defender and other security protections enabled.
+
+**Important:** Changes to local purchase-validation or SKU data do not establish legitimate purchase authorization. This project does not guarantee that server-side license validation will accept modified local state.
+
+## Disclaimer
+
+This project is provided for educational and software research purposes.
+
+Users are responsible for understanding the code, its effects on local browser data, and any applicable software licensing terms.
+
+The author makes no guarantee of compatibility, reliability, or suitability for a particular environment.
 
 ---
 
-## How to Compile / Cross-Compile 📦
-
-You can build standalone binaries for different operating systems and architectures using the pre-configured compilation tasks:
-
-### Compile for Windows (x64)
-```bash
-deno task compile-win
-```
-
-### Compile for macOS Apple Silicon (ARM64)
-```bash
-deno task compile-mac-arm
-```
-
-### Compile for macOS Intel (x64)
-```bash
-deno task compile-mac-x64
-```
-
-These tasks will output the built binaries into the `dist/` directory.
-
----
-
-## Pre-Bundled Deno Binaries 🎉
-
-In our latest releases, we offer **pre-bundled Deno binaries** that make running the unlocker easier than ever! 🚀 You can download them from our [latest release page](https://github.com/ObjectAscended/brave-origin-windows-unlocker/releases/latest). These binaries ensure a smooth setup and save you time.
-
-## Why Run the Unlocker Natively? 🤔
-
-Running the unlocker natively is typically a better choice than running a browser inside virtual/emulated environments. Here's why:
-
-1. **Performance**: The native experience generally offers better performance than emulated environments. ⚡
-2. **Simplicity**: You avoid complex setups and configurations, making it more straightforward for users of all levels. 🛠️
-3. **Compatibility**: Some features and functionalities might only work seamlessly in a native environment, ensuring you get the most out of your tools. 🔗
-4. **User Experience**: Enjoy a more intuitive interface and fewer problems managing dependencies. 😊
-
-Enjoy using our tool! 🎈
+**Built with TypeScript and Deno.**
