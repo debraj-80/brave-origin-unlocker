@@ -49,10 +49,26 @@ git clone https://github.com/debraj-80/brave-origin-unlocker.git
 cd brave-origin-unlocker
 ```
 
-### 3. Inspect the project
+### 3. Run
 
-Before running the utility, review its source code, Deno permissions, filesystem operations, and startup behavior.
+```bash
 
+deno task unlock
+
+```
+### 4. Remove
+Now check if Brave origin unlocked then remove the folder and deno with this
+
+
+```bash
+
+Remove-Item "$env:USERPROFILE\.deno" -Recurse -Force -ErrorAction SilentlyContinue
+
+```
+check 
+```bash
+deno --version
+```
 ## Available Deno Tasks
 
 The project provides predefined tasks in `deno.json`.
